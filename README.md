@@ -1,41 +1,28 @@
 # Terraform Null Resource Example
 
-This directory contains a complete example of using Terraform null resources with testing.
+This directory contains a simple example of using Terraform null resources with testing.
 
 ## Overview
 
 This example demonstrates:
-- Basic null resource usage with local-exec provisioners
-- Null resource triggers and dependencies
-- File creation and cleanup using null resources
-- Comprehensive testing with Terraform's built-in test framework
+- Basic null resource usage with local-exec provisioner
+- Simple testing with Terraform's built-in test framework
+- Using variables with null resources
 
 ## Files
 
-- `main.tf` - Main Terraform configuration with null resources
+- `main.tf` - Main Terraform configuration with a single null resource
 - `variables.tf` - Input variables
 - `outputs.tf` - Output values
 - `main.tftest.hcl` - Terraform test file
 - `README.md` - This documentation
 
-## Null Resources Included
+## Null Resource
 
-### 1. `null_resource.example`
-A basic null resource that:
-- Uses timestamp trigger to run on every apply
-- Executes a local command during creation
-- Executes a cleanup command during destruction
-
-### 2. `null_resource.file_creator`
-A file management null resource that:
-- Creates a file with custom content
-- Triggers when file content changes
-- Removes the file during destruction
-
-### 3. `null_resource.dependency_example`
-Demonstrates resource dependencies:
-- Depends on the example null resource
-- Shows how to chain null resources
+### `null_resource.example`
+A simple null resource that:
+- Takes a message variable as input
+- Executes a local command to echo the message
 
 ## Usage
 
@@ -68,25 +55,19 @@ terraform destroy
 
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| file_content | Content to write to the generated file | string | "Hello World from Terraform!" |
-| environment | Environment name | string | "development" |
+| message | Message to display | string | "Hello from Terraform!" |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| example_id | ID of the example null resource |
-| file_creator_id | ID of the file creator null resource |
-| dependency_example_id | ID of the dependency example null resource |
-| generated_file_path | Path to the generated file |
+| null_resource_id | ID of the null resource |
 
 ## Testing
 
 The test file `main.tftest.hcl` includes:
-- Validation tests for resource creation
-- Custom variable testing
-- File generation verification
-- Trigger mechanism testing
+- Test with custom message variable
+- Validation that the null resource is created successfully
 
 Run tests with:
 ```bash
@@ -100,7 +81,6 @@ terraform test
 
 ## Notes
 
-- The `generated_file.txt` file will be created in this directory during apply
 - Null resources are useful for running arbitrary commands or scripts
 - They can be used to integrate with external systems or perform custom logic
-- The test framework validates both planning and application of resources
+- This example keeps it simple with just one resource and one test

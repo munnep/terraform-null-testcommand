@@ -13,3 +13,5 @@ resource "null_resource" "example" {
     command = "echo '${var.message}'"
   }
 }
+
+resource "null_resouce" "example2" {}

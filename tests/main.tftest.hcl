@@ -4,9 +4,9 @@
 run "test_null_resource" {
   command = apply
 
-  variables {
-    message = "Hello from test!"
-  }
+  # variables {
+  #   message = "Hello from test!"
+  # }
 
   assert {
     condition     = output.null_resource_id != ""

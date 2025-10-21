@@ -11,16 +11,6 @@ This module demonstrates Terraform testing capabilities with a simple boolean va
 - **Output Validation**: Asserting expected output values
 - **Test Organization**: Structuring tests in the `tests/` directory
 
-## 🏗️ Architecture
-
-```mermaid
-graph TD
-    A[Variable: value (bool)] --> B[Output: value]
-    B --> C[Test Assertions]
-    C --> D[test1: value == true]
-    C --> E[test2: value == false]
-```
-
 ## 📁 Module Structure
 
 ```

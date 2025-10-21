@@ -1,15 +1,21 @@
-# Terraform test file for null resource example
-# Run with: terraform test
+run "test1" {
+  assert {
+    condition = output.value == true
+    error_message = "exptected value to be true"
+  }
+}
 
-run "test_null_resource" {
-  command = apply
-
+run "test2" {
   variables {
-    message = "Hello from test!"
+    value = !var.value
   }
 
   assert {
-    condition     = output.null_resource_id != ""
-    error_message = "Null resource ID should not be empty"
+    condition = output.value == false
+    error_message = "expected value to be false"
   }
+}
+
+variable "value" {
+  type = bool
 }

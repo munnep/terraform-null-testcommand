@@ -2,7 +2,7 @@
 
 A minimal Terraform configuration demonstrating Terraform's native testing framework with boolean variable testing.
 
-## 📋 What This Module Does
+## 📋 What This Module Does  
 
 This module demonstrates Terraform testing capabilities with a simple boolean variable/output pattern. It serves as a foundational example for:
 
